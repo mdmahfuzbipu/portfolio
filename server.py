@@ -1,8 +1,12 @@
-from flask import Flask, render_template , request , redirect
+from flask import Flask, render_template , request , redirect , send_from_directory
 import csv
 
 
 app = Flask(__name__)
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(app.static_folder, 'robots.txt')
 
 @app.route("/")
 def my_home():
